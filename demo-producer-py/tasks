@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+set -e
+
+for command in "$@"
+do
+    case "${command}" in
+        unit-test)
+            poetry run pytest tests/unit
+        ;;
+        format)
+            poetry run isort demo_producer/ tests/
+            poetry run black -t py310 -l100 demo_producer/ tests/
+        ;;
+        lint)
+            poetry run flake8 demo_producer/ tests/
+        ;;
+        run)
+            poetry run python -m demo_producer.main
+        ;;
+        dev-setup)
+           poetry install
+        ;;
+        *)
+            echo "Invalid command: '${command}'"
+            exit 1
+        ;;
+    esac
+done
