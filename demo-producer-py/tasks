@@ -22,11 +22,8 @@ do
             poetry install
         ;;
         build-container)
-            poetry build
-            package_version=$(poetry version -s)
             git_sha=$(git rev-parse --short HEAD)
-            package="demo-producer-${package_version}.tar.gz"
-            docker build -t demo-producer:${git_sha} --build-arg PACKAGE=$package .
+            docker build -t demo-producer:${git_sha} .
         ;;
         *)
             echo "Invalid command: '${command}'"
