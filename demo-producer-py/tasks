@@ -19,7 +19,11 @@ do
             poetry run python -m demo_producer.main
         ;;
         dev-setup)
-           poetry install
+            poetry install
+        ;;
+        build-container)
+            git_sha=$(git rev-parse --short HEAD)
+            docker build -t demo-producer:${git_sha} .
         ;;
         *)
             echo "Invalid command: '${command}'"
