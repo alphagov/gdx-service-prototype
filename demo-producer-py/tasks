@@ -22,8 +22,11 @@ do
             poetry install
         ;;
         build-container)
-            git_sha=$(git rev-parse --short HEAD)
-            docker build -t demo-producer:${git_sha} .
+            if [ -z $BUILD_TAG ]; then
+                echo "Error: BUILD_TAG environment variable not set"
+                exit 1
+            fi
+            docker build -t demo-producer:${BUILD_TAG} .
         ;;
         *)
             echo "Invalid command: '${command}'"
