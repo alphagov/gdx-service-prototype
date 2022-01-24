@@ -24,6 +24,7 @@ class DemoProducerConfig:
     bootstrap_servers: str
     topic: str
     message_max_bytes: int
+    security_protocol: str
     log_level: str
 
     @classmethod
@@ -33,6 +34,7 @@ class DemoProducerConfig:
             bootstrap_servers=env.read("BOOTSTRAP_SERVERS"),
             topic=env.read("TOPIC"),
             message_max_bytes=int(env.read("MESSAGE_MAX_BYTES", default="1000")),
+            security_protocol=env.read("SECURITY_PROTOCOL", default="ssl"),
             log_level=env.read("LOG_LEVEL", default="INFO").upper(),
         )
 
@@ -40,4 +42,5 @@ class DemoProducerConfig:
         return {
             "bootstrap.servers": self.bootstrap_servers,
             "message.max.bytes": self.message_max_bytes,
+            "security.protocol": self.security_protocol,
         }
