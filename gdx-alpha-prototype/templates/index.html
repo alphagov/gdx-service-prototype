@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% block pageTitle %}GDX - Login{% endblock %}
+
+{% block content %}
+    <h1 class="govuk-heading-xl">GDX</h1>
+    <p class="govuk-body">Welcome to GDX</p>
+
+    {{ govukButton({
+        text: "Continue",
+        href: "/dashboard"
+    }) }}
+
+{% endblock %}
+

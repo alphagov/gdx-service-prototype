@@ -1,0 +1,4 @@
+node_modules
+
+# CSS is generated from SASS
+css

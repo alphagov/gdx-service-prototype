@@ -1,0 +1,19 @@
+{
+  "dependencies": {
+    "express": "^4.17.2",
+    "govuk-frontend": "^4.0.0",
+    "nunjucks": "^3.2.3",
+    "sass": "^1.49.4"
+  },
+  "name": "gdx-alpha-prototype",
+  "version": "0.1.0",
+  "scripts": {
+    "sass": "sass node_modules/govuk-frontend/govuk/all.scss css/all.css",
+    "dev": "nodemon -e js,html app.js"
+  },
+  "author": "",
+  "description": "",
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}
