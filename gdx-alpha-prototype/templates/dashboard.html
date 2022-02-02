@@ -4,11 +4,10 @@
 
 {% block content %}
     <h1 class="govuk-heading-xl">GDX Dashboard</h1>
-    <p class="govuk-body">This is a useful dashboard</p>
 
     <p class="govuk-body">You are sharing 3 datasets.</p>
 
     <p class="govuk-body">2 datasets are being shared with you.</p>
 
-    <p class="govuk-body">There are 47 datasets available on GDX.</p>
+    <p class="govuk-body">There are <a class="govuk-link" href="/datasets">{{ datasetCount }} datasets available</a> on GDX.</p>
 {% endblock %}

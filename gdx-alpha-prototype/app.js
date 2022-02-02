@@ -1,8 +1,11 @@
 const express = require('express');
 const nunjucks = require('nunjucks');
 const path = require('path');
+const data = require('./data.js');
 const app = express();
 const port = 3000;
+
+const datasets = data.datasets;
 
 nunjucks.configure([
     'templates',
@@ -16,7 +19,21 @@ app.get("/", (req, res) => {
 })
 
 app.get("/dashboard", (req, res) => {
-   res.render("dashboard.html");
+   res.render("dashboard.html", {
+       datasetCount: datasets.fetchCount()
+   });
+})
+
+app.get("/datasets", (req, res) => {
+   res.render("datasets.html", {
+       datasets: datasets.fetchAllSummaries(),
+       datasetCount: datasets.fetchCount()
+   });
+})
+
+app.get("/datasets/:datasetId", (req, res) => {
+   const dataset = datasets.fetchById(req.params.datasetId);
+   res.render("dataset.html", {dataset: dataset});
 })
 
 function localAsset(assetPath) {
