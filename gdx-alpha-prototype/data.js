@@ -1,35 +1,47 @@
-class DatasetService {
-
-    #datasetsById;
-
-    constructor(datasets) {
-        this.datasetsById = Object.fromEntries(datasets.map(d => [d.id, d]));
+class CatalogueService {
+    
+    constructor(dataItems) {
+        this.dataItems = Object.fromEntries(dataItems.map(d => [d.id, d]));
     }
 
     fetchById(id) {
-        return this.datasetsById[id]
+        return this.dataItems[id]
     }
 
     fetchAllSummaries() {
         //TODO: Only return a summary
-        return Object.values(this.datasetsById).map(d => d);
+        return Object.values(this.dataItems).map(d => d);
     }
 
     fetchCount() {
-        return Object.keys(this.datasetsById).length;
+        return Object.keys(this.dataItems).length;
     }
 }
 
-exports.datasets = new DatasetService([
+exports.catalogue = new CatalogueService([
     {
         id: "death-events",
         name: "Death Events",
-        description: "Some description"
+        description: "About death",
+        email: "support@example.com",
+        department:"GRO",
+        tags: ["events", "death"]
     },
     {
-        id: "beachball-licences",
-        name: "Beachball Licences",
-        description: "Some description"
+        id: "debt-events",
+        name: "Debt Events",
+        description: "About what you owe",
+        email: "support@example.com",
+        department:"HMRC",
+        tags: ["events", "debt"]
     },
+    {
+        id: "passport-office-api",
+        name: "Passport Information",
+        description: "Information about passport details.",
+        email: "support@example.com",
+        department:"HOME OFFICE",
+        tags: ["api", "passport"]
+    }
 ]);
 

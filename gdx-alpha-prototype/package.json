@@ -9,7 +9,7 @@
   "version": "0.1.0",
   "scripts": {
     "sass": "sass node_modules/govuk-frontend/govuk/all.scss css/all.css",
-    "dev": "nodemon -e js,html app.js"
+    "dev": "nodemon -e js,html,njk app.js"
   },
   "author": "",
   "description": "",

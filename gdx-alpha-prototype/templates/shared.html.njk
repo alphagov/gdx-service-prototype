@@ -1,10 +1,10 @@
-{% extends "base.html" %}
+{% extends "base.html.njk" %}
 
-{% block pageTitle %}GDX - Datasets being consumed{% endblock %}
+{% block pageTitle %}GDX - Datasets being shared{% endblock %}
 
 {% block content %}
 <h1 class="govuk-heading-l">GDX Datasets</h1>
-<p class="govuk-body">There are currently {{ datasetCount}} datasets being consumed</p>
+<p class="govuk-body">There are currently {{ datasetCount}} datasets being shared</p>
 
 <ul>
     {% for dataset in datasets %}

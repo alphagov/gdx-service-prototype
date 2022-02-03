@@ -5,7 +5,7 @@ const data = require('./data.js');
 const app = express();
 const port = 3000;
 
-const datasets = data.datasets;
+const catalogue = data.catalogue;
 
 nunjucks.configure([
     'templates',
@@ -15,37 +15,38 @@ nunjucks.configure([
 });
 
 app.get("/", (req, res) => {
-   res.render("index.html");
+   res.render("index.html.njk");
 })
 
 app.get("/dashboard", (req, res) => {
-   res.render("dashboard.html", {
+   res.render("dashboard.html.njk", {
        datasetCount: datasets.fetchCount()
    });
 })
 
 app.get("/shared", (req, res) => {
-    res.render("shared.html", {
+    res.render("shared.html.njk", {
         datasetCount: datasets.fetchCount()
     });
 })
 
 app.get("/consumed", (req, res) => {
-    res.render("consumed.html", {
+    res.render("consumed.html.njk", {
         datasetCount: datasets.fetchCount()
     });
 })
 
-app.get("/datasets", (req, res) => {
-   res.render("datasets.html", {
-       datasets: datasets.fetchAllSummaries(),
-       datasetCount: datasets.fetchCount()
-   });
+app.get("/catalogue", (req, res) => {
+    res.render("catalogue.html.njk", {
+        dataItems:catalogue.fetchAllSummaries(),
+        itemCount: catalogue.fetchCount()
+    });
 })
 
-app.get("/datasets/:datasetId", (req, res) => {
-   const dataset = datasets.fetchById(req.params.datasetId);
-   res.render("dataset.html", {dataset: dataset});
+
+app.get("/catalogue/:dataItemId", (req, res) => {
+   const dataItem = catalogue.fetchById(req.params.dataItemId);
+   res.render("dataitem.html.njk", {dataItem: dataItem});
 })
 
 function localAsset(assetPath) {
