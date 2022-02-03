@@ -9,3 +9,9 @@ npm install
 npm run sass
 npm run dev
 ```
+
+Precommit:
+
+```
+npm run format
+```

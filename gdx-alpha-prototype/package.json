@@ -9,11 +9,13 @@
   "version": "0.1.0",
   "scripts": {
     "sass": "sass node_modules/govuk-frontend/govuk/all.scss css/all.css",
-    "dev": "nodemon -e js,html,njk app.js"
+    "dev": "nodemon -e js,html,njk app.js",
+    "format": "prettier --write ."
   },
   "author": "",
   "description": "",
   "devDependencies": {
-    "nodemon": "^2.0.15"
+    "nodemon": "^2.0.15",
+    "prettier": "2.5.1"
   }
 }
