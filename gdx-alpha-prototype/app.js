@@ -1,11 +1,12 @@
 const express = require("express");
 const nunjucks = require("nunjucks");
 const path = require("path");
-const data = require("./data.js");
+const service = require("./service.js");
 const app = express();
 const port = 3000;
 
-const catalogue = data.catalogue;
+const catalogue = service.catalogue;
+const dataRequests = service.dataRequests;
 
 app.use(express.urlencoded({ extended: true }));
 
@@ -53,7 +54,7 @@ app.get("/requestaccess", (req, res) => {
 });
 
 app.post("/requestaccess", (req, res) => {
-  console.log(req.body);
+  dataRequests.createRequest({ detail: req.body.detail });
   res.redirect("requestconfirmation");
 });
 

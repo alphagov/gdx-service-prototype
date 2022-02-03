@@ -1,4 +1,22 @@
+class DataRequestService {
+  #requests;
+
+  constructor() {
+    this.requests = [];
+  }
+
+  createRequest(dataReq) {
+    this.requests.push(dataReq);
+  }
+
+  fetchAll() {
+    return requests;
+  }
+}
+
 class CatalogueService {
+  #dataItems;
+
   constructor(dataItems) {
     this.dataItems = Object.fromEntries(dataItems.map((d) => [d.id, d]));
   }
@@ -16,6 +34,7 @@ class CatalogueService {
     return Object.keys(this.dataItems).length;
   }
 }
+exports.dataRequests = new DataRequestService();
 
 exports.catalogue = new CatalogueService([
   {
