@@ -1,0 +1,15 @@
+{% extends "base.html.njk" %}
+
+{% block pageTitle %}GDX - Request Access{% endblock %}
+
+{% block content %}
+<h1 class="govuk-heading-m">Access Form</h1>
+
+<ul>
+    {% for dataItem in dataItems %}
+    <li>
+        <h2><a class = "govuk-link" href="/catalogue/{{ dataItem.id }}">{{ dataItem.name }}</a></h2>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

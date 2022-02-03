@@ -20,19 +20,19 @@ app.get("/", (req, res) => {
 
 app.get("/dashboard", (req, res) => {
    res.render("dashboard.html.njk", {
-       datasetCount: datasets.fetchCount()
+       datasetCount: catalogue.fetchCount()
    });
 })
 
 app.get("/shared", (req, res) => {
     res.render("shared.html.njk", {
-        datasetCount: datasets.fetchCount()
+        datasetCount: catalogue.fetchCount()
     });
 })
 
 app.get("/consumed", (req, res) => {
     res.render("consumed.html.njk", {
-        datasetCount: datasets.fetchCount()
+        datasetCount: catalogue.fetchCount()
     });
 })
 
@@ -48,6 +48,12 @@ app.get("/catalogue/:dataItemId", (req, res) => {
    const dataItem = catalogue.fetchById(req.params.dataItemId);
    res.render("dataitem.html.njk", {dataItem: dataItem});
 })
+
+app.get("/requestaccess", (req, res) => {
+    const dataItem = catalogue.fetchById(req.query.dataitem);
+    res.render("requestaccess.html.njk", {dataItem:dataItem});
+})
+
 
 function localAsset(assetPath) {
     return express.static(path.join(__dirname, assetPath));

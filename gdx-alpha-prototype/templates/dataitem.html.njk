@@ -47,9 +47,12 @@
 }) }}
 
 {% from "govuk/components/button/macro.njk" import govukButton %}
-
-{{ govukButton({
-  text: "Request Access"
-}) }}
+  {% set requestUrl = ["/requestaccess?dataitem=", dataItem.id] | join %}
+<div class="govuk-button-group">
+  {{ govukButton({
+    text: "Request Access",
+    href: requestUrl
+  }) }}
+</div>
 
 {% endblock %}
