@@ -7,6 +7,8 @@ const port = 3000;
 
 const catalogue = data.catalogue;
 
+app.use(express.urlencoded({ extended: true }));
+
 nunjucks.configure(["templates", "node_modules/govuk-frontend/"], {
   express: app,
 });
@@ -50,9 +52,15 @@ app.get("/requestaccess", (req, res) => {
   res.render("requestaccess.html.njk", { dataItem: dataItem });
 });
 
+app.post("/requestaccess", (req, res) => {
+  console.log(req.body);
+  res.redirect("requestconfirmation");
+});
+
 app.get("/requestconfirmation", (req, res) => {
   res.render("requestconfirmation.html.njk");
 });
+
 function localAsset(assetPath) {
   return express.static(path.join(__dirname, assetPath));
 }

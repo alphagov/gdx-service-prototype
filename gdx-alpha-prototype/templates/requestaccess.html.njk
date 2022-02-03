@@ -1,11 +1,13 @@
 {% extends "base.html.njk" %}
 
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+{% from "govuk/components/textarea/macro.njk" import govukTextarea %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
 {% block pageTitle %}GDX - Request Access{% endblock %}
 
 {% block content %}
 <h1 class="govuk-heading-m">Access Form</h1>
-
-    {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
 
     {{ govukSummaryList({
         rows: [
@@ -44,11 +46,11 @@
         ]
     }) }}
 
-{% from "govuk/components/textarea/macro.njk" import govukTextarea %}
-
+<form method="post">
 {{ govukTextarea({
-    name: "more-detail",
-    id: "more-detail",
+    name: "request-detail",
+    id: "request-detail",
+    spellcheck: true,
     label: {
         text: "Please explain why access to the data is required",
         classes: "govuk-label--m"
@@ -58,11 +60,9 @@
     }
 }) }}
 
-{% from "govuk/components/button/macro.njk" import govukButton %}
-
 {{ govukButton({
     text: "Submit",
-    href: "/requestconfirmation",
     preventDoubleClick: true
 }) }}
+</form>
 {% endblock %}
