@@ -54,7 +54,9 @@ app.get("/requestaccess", (req, res) => {
     res.render("requestaccess.html.njk", {dataItem:dataItem});
 })
 
-
+app.get("/requestconfirmation", (req, res) => {
+    res.render("requestconfirmation.html.njk");
+})
 function localAsset(assetPath) {
     return express.static(path.join(__dirname, assetPath));
 }
