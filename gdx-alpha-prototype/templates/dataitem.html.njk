@@ -1,0 +1,58 @@
+
+{% extends "base.html.njk" %}
+
+{% block pageTitle %}GDX - Dataset{% endblock %}
+{% block navigation %}
+    {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+
+    {{ govukBackLink({
+      text: "Back",
+      href: "/catalogue"
+    }) }}
+{% endblock %}
+{% block content %}
+
+    <h1 class="govuk-heading-l">{{ dataItem.name }}</h1>
+    <p class="govuk-body-m">{{dataItem.description}}</p>
+
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+
+{{ govukSummaryList({
+  rows: [
+    {
+      key: {
+        text: "Email"
+      },
+      value: {
+        text: dataItem.email
+      }
+    },
+    {
+      key: {
+        text: "Department"
+      },
+      value: {
+        text: dataItem.department
+      }
+    },
+    {
+      key: {
+        text: "Tags"
+      },
+      value: {
+        html: dataItem.tags | join(', ')
+      }
+    }
+  ]
+}) }}
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+  {% set requestUrl = ["/requestaccess?dataitem=", dataItem.id] | join %}
+<div class="govuk-button-group">
+  {{ govukButton({
+    text: "Request Access",
+    href: requestUrl
+  }) }}
+</div>
+
+{% endblock %}

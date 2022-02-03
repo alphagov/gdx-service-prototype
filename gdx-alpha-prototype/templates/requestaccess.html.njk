@@ -1,0 +1,68 @@
+{% extends "base.html.njk" %}
+
+{% block pageTitle %}GDX - Request Access{% endblock %}
+
+{% block content %}
+<h1 class="govuk-heading-m">Access Form</h1>
+
+    {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+
+    {{ govukSummaryList({
+        rows: [
+            {
+                key: {
+                text: "Requesting Department"
+            },
+                value: {
+                text: "DWP"
+            }
+            },
+            {
+                key: {
+                text: "Requesting Department Email"
+            },
+                value: {
+                text: "dwp@example.com"
+            }
+            },
+            {
+                key: {
+                text: "Data Item"
+            },
+                value: {
+                html: dataItem.name
+            }
+            },
+            {
+                key: {
+                text: "Data Item Description"
+            },
+                value: {
+                html: dataItem.description
+            }
+            }
+        ]
+    }) }}
+
+{% from "govuk/components/textarea/macro.njk" import govukTextarea %}
+
+{{ govukTextarea({
+    name: "more-detail",
+    id: "more-detail",
+    label: {
+        text: "Please explain why access to the data is required",
+        classes: "govuk-label--m"
+    },
+    hint: {
+        text: "Make sure to include details about how the data will be used"
+    }
+}) }}
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+    text: "Submit",
+    href: "/requestconfirmation",
+    preventDoubleClick: true
+}) }}
+{% endblock %}

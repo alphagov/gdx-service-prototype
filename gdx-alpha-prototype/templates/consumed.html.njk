@@ -1,0 +1,16 @@
+{% extends "base.html.njk" %}
+
+{% block pageTitle %}GDX - Datasets being consumed{% endblock %}
+
+{% block content %}
+<h1 class="govuk-heading-l">GDX Datasets</h1>
+<p class="govuk-body">There are currently {{ datasetCount}} datasets being consumed</p>
+
+<ul>
+    {% for dataset in datasets %}
+    <li>
+        <h2><a class = "govuk-link" href="/datasets/{{ dataset.id }}">{{ dataset.name }}</a></h2>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}
