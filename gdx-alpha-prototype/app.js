@@ -24,6 +24,18 @@ app.get("/dashboard", (req, res) => {
    });
 })
 
+app.get("/shared", (req, res) => {
+    res.render("shared.html", {
+        datasetCount: datasets.fetchCount()
+    });
+})
+
+app.get("/consumed", (req, res) => {
+    res.render("consumed.html", {
+        datasetCount: datasets.fetchCount()
+    });
+})
+
 app.get("/datasets", (req, res) => {
    res.render("datasets.html", {
        datasets: datasets.fetchAllSummaries(),
