@@ -1,12 +1,19 @@
 {% extends "base.html.njk" %}
 
 {% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/warning-text/macro.njk" import govukWarningText %}
+
 
 {% block pageTitle %}GDX - Login{% endblock %}
 
 {% block content %}
     <h1 class="govuk-heading-xl">GDX</h1>
-    <p class="govuk-body">Welcome to GDX</p>
+    <p class="govuk-body">Welcome to the GDX prototype.</p>
+
+    {{ govukWarningText({
+      text: "This is a mock up of how GDX might work, not a functioning service.",
+      iconFallbackText: "Warning"
+    }) }}
 
     {{ govukButton({
         text: "Continue",
