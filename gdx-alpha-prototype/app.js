@@ -97,6 +97,13 @@ app.get("/requestconfirmation", (req, res) => {
   res.render("requestconfirmation.html.njk", { user: req.session.user });
 });
 
+app.get("/requests", (req, res) => {
+  res.render("requests.html.njk", {
+    user: req.session.user,
+    dataRequests: dataRequests.fetchAllSummaries(),
+  });
+});
+
 function localAsset(assetPath) {
   return express.static(path.join(__dirname, assetPath));
 }

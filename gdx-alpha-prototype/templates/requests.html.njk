@@ -1,0 +1,16 @@
+{% extends "base.html.njk" %}
+
+{% block pageTitle %}GDX - Data Requests{% endblock %}
+
+{% block content %}
+<h1 class="govuk-heading-l">Data Requests</h1>
+
+<ul class="govuk-list">
+    {% for request in dataRequests %}
+    <li>
+        <a class="govuk-link" href="/requests/{{ request.id }}">{{ request.requestingUser }}</a>
+    </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

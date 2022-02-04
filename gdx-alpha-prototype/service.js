@@ -1,16 +1,23 @@
 class DataRequestService {
-  #requests;
+  #requestsById;
+  #requestCount;
 
   constructor() {
-    this.requests = [];
+    this.requestCount = 0;
+    this.requestsById = {};
   }
 
   createRequest(dataReq) {
-    this.requests.push(dataReq);
+    const requestId = this.requestCount;
+    this.requestsById[requestId] = { id: requestId, ...dataReq };
+    this.requestCount += 1;
   }
 
-  fetchAll() {
-    return requests;
+  fetchAllSummaries() {
+    return Object.values(this.requestsById).map((r) => {
+      //TODO: Dept, dataset name and date?
+      return { id: r.id, requestingUser: r.requestingUser };
+    });
   }
 }
 
@@ -26,8 +33,9 @@ class CatalogueService {
   }
 
   fetchAllSummaries() {
-    //TODO: Only return a summary
-    return Object.values(this.datasetsById).map((d) => d);
+    return Object.values(this.datasetsById).map((d) => {
+      return { id: d.id, name: d.name };
+    });
   }
 
   fetchCount() {
