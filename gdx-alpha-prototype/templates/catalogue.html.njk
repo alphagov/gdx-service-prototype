@@ -5,11 +5,10 @@
 {% block content %}
 <h1 class="govuk-heading-l">GDX Catalogue</h1>
 <p class="govuk-body">List of available data</p>
-
-<ul>
+<ul class="govuk-list">
     {% for dataItem in dataItems %}
     <li>
-        <h2><a class = "govuk-link" href="/catalogue/{{ dataItem.id }}">{{ dataItem.name }}</a></h2>
+        <a class="govuk-link" href="/catalogue/{{ dataItem.id }}">{{ dataItem.name }}</a>
     </li>
     {% endfor %}
 </ul>
