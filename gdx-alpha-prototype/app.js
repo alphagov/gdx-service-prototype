@@ -2,6 +2,8 @@ const express = require("express");
 const nunjucks = require("nunjucks");
 const path = require("path");
 const service = require("./service.js");
+const session = require("express-session");
+const crypto = require("crypto");
 const app = express();
 const port = 3000;
 
@@ -9,6 +11,14 @@ const catalogue = service.catalogue;
 const dataRequests = service.dataRequests;
 
 app.use(express.urlencoded({ extended: true }));
+
+app.use(
+  session({
+    secret: crypto.randomBytes(32).toString("hex"),
+    resave: false,
+    saveUninitialized: false,
+  })
+);
 
 nunjucks.configure(["templates", "node_modules/govuk-frontend/"], {
   express: app,
@@ -18,26 +28,37 @@ app.get("/", (req, res) => {
   res.render("index.html.njk");
 });
 
+app.post("/login", (req, res) => {
+  req.session.regenerate(() => {
+    req.session.user = req.body.user;
+    res.redirect("dashboard");
+  });
+});
+
 app.get("/dashboard", (req, res) => {
   res.render("dashboard.html.njk", {
+    user: req.session.user,
     datasetCount: catalogue.fetchCount(),
   });
 });
 
 app.get("/shared", (req, res) => {
   res.render("shared.html.njk", {
+    user: req.session.user,
     datasetCount: catalogue.fetchCount(),
   });
 });
 
 app.get("/consumed", (req, res) => {
   res.render("consumed.html.njk", {
+    user: req.session.user,
     datasetCount: catalogue.fetchCount(),
   });
 });
 
 app.get("/catalogue", (req, res) => {
   res.render("catalogue.html.njk", {
+    user: req.session.user,
     dataItems: catalogue.fetchAllSummaries(),
     itemCount: catalogue.fetchCount(),
   });
@@ -45,12 +66,22 @@ app.get("/catalogue", (req, res) => {
 
 app.get("/catalogue/:dataItemId", (req, res) => {
   const dataItem = catalogue.fetchById(req.params.dataItemId);
-  res.render("dataitem.html.njk", { dataItem: dataItem });
+  res.render("dataitem.html.njk", {
+    dataItem: dataItem,
+    user: req.session.user,
+  });
 });
 
 app.get("/requestaccess", (req, res) => {
-  const dataItem = catalogue.fetchById(req.query.dataitem);
-  res.render("requestaccess.html.njk", { dataItem: dataItem });
+  if (req.query.dataitem != null) {
+    const dataItem = catalogue.fetchById(req.query.dataitem);
+    res.render("requestaccess.html.njk", {
+      dataItem: dataItem,
+      user: req.session.user,
+    });
+  } else {
+    res.redirect("catalogue");
+  }
 });
 
 app.post("/requestaccess", (req, res) => {
@@ -59,7 +90,7 @@ app.post("/requestaccess", (req, res) => {
 });
 
 app.get("/requestconfirmation", (req, res) => {
-  res.render("requestconfirmation.html.njk");
+  res.render("requestconfirmation.html.njk", { user: req.session.user });
 });
 
 function localAsset(assetPath) {

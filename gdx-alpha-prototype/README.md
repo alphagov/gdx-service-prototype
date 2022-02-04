@@ -1,6 +1,6 @@
 # GDX Alpha Prototype
 
-This is a mock up of how GDX might work, not a functioning service.
+This is a mock up of how the GDX user experiance might work, _not a functioning production service_.
 
 ## Running locally
 
