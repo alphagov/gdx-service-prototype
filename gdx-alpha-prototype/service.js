@@ -15,23 +15,23 @@ class DataRequestService {
 }
 
 class CatalogueService {
-  #dataItems;
+  #datasetsById;
 
-  constructor(dataItems) {
-    this.dataItems = Object.fromEntries(dataItems.map((d) => [d.id, d]));
+  constructor(datasets) {
+    this.datasetsById = Object.fromEntries(datasets.map((d) => [d.id, d]));
   }
 
   fetchById(id) {
-    return this.dataItems[id];
+    return this.datasetsById[id];
   }
 
   fetchAllSummaries() {
     //TODO: Only return a summary
-    return Object.values(this.dataItems).map((d) => d);
+    return Object.values(this.datasetsById).map((d) => d);
   }
 
   fetchCount() {
-    return Object.keys(this.dataItems).length;
+    return Object.keys(this.datasetsById).length;
   }
 }
 exports.dataRequests = new DataRequestService();

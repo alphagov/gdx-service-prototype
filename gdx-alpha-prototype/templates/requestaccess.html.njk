@@ -29,18 +29,18 @@
             },
             {
                 key: {
-                text: "Data Item"
+                text: "Dataset"
             },
                 value: {
-                html: dataItem.name
+                html: dataset.name
             }
             },
             {
                 key: {
-                text: "Data Item Description"
+                text: "Dataset Description"
             },
                 value: {
-                html: dataItem.description
+                html: dataset.description
             }
             }
         ]
@@ -60,7 +60,7 @@
     }
 }) }}
 
-<input type="hidden" id="dataItemId" name="dataItemId" value="{{ dataItem.id }}">
+<input type="hidden" id="datasetId" name="datasetId" value="{{ dataset.id }}">
 
 
 {{ govukButton({

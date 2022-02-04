@@ -6,10 +6,11 @@
 <h1 class="govuk-heading-l">GDX Catalogue</h1>
 <p class="govuk-body">List of available data.</p>
 <p class="govuk-body">In the future, this will be integrated with the CDDO catalogue.</p>
+<p class="govuk-body">There are currently {{ datasetCount }} datasets available via GDX.</p>
 <ul class="govuk-list">
-    {% for dataItem in dataItems %}
+    {% for dataset in datasets %}
     <li>
-        <a class="govuk-link" href="/catalogue/{{ dataItem.id }}">{{ dataItem.name }}</a>
+        <a class="govuk-link" href="/catalogue/{{ dataset.id }}">{{ dataset.name }}</a>
     </li>
     {% endfor %}
 </ul>

@@ -59,24 +59,24 @@ app.get("/consumed", (req, res) => {
 app.get("/catalogue", (req, res) => {
   res.render("catalogue.html.njk", {
     user: req.session.user,
-    dataItems: catalogue.fetchAllSummaries(),
-    itemCount: catalogue.fetchCount(),
+    datasets: catalogue.fetchAllSummaries(),
+    datasetCount: catalogue.fetchCount(),
   });
 });
 
-app.get("/catalogue/:dataItemId", (req, res) => {
-  const dataItem = catalogue.fetchById(req.params.dataItemId);
-  res.render("dataitem.html.njk", {
-    dataItem: dataItem,
+app.get("/catalogue/:datasetId", (req, res) => {
+  const dataset = catalogue.fetchById(req.params.datasetId);
+  res.render("dataset.html.njk", {
+    dataset: dataset,
     user: req.session.user,
   });
 });
 
 app.get("/requestaccess", (req, res) => {
-  if (req.query.dataitem != null) {
-    const dataItem = catalogue.fetchById(req.query.dataitem);
+  if (req.query.dataset != null) {
+    const dataset = catalogue.fetchById(req.query.dataset);
     res.render("requestaccess.html.njk", {
-      dataItem: dataItem,
+      dataset: dataset,
       user: req.session.user,
     });
   } else {
@@ -87,7 +87,7 @@ app.get("/requestaccess", (req, res) => {
 app.post("/requestaccess", (req, res) => {
   dataRequests.createRequest({
     requestingUser: req.session.user,
-    dataItemId: req.body.dataItemId,
+    datasetId: req.body.datasetId,
     detail: req.body.requestDetail,
   });
   res.redirect("requestconfirmation");

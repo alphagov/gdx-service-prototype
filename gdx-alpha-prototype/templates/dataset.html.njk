@@ -12,8 +12,8 @@
 {% endblock %}
 {% block content %}
 
-    <h1 class="govuk-heading-l">{{ dataItem.name }}</h1>
-    <p class="govuk-body-m">{{dataItem.description}}</p>
+    <h1 class="govuk-heading-l">{{ dataset.name }}</h1>
+    <p class="govuk-body-m">{{dataset.description}}</p>
 
 {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
 
@@ -24,7 +24,7 @@
         text: "Email"
       },
       value: {
-        text: dataItem.email
+        text: dataset.email
       }
     },
     {
@@ -32,7 +32,7 @@
         text: "Department"
       },
       value: {
-        text: dataItem.department
+        text: dataset.department
       }
     },
     {
@@ -40,14 +40,14 @@
         text: "Tags"
       },
       value: {
-        html: dataItem.tags | join(', ')
+        html: dataset.tags | join(', ')
       }
     }
   ]
 }) }}
 
 {% from "govuk/components/button/macro.njk" import govukButton %}
-  {% set requestUrl = ["/requestaccess?dataitem=", dataItem.id] | join %}
+  {% set requestUrl = ["/requestaccess?dataset=", dataset.id] | join %}
 <div class="govuk-button-group">
   {{ govukButton({
     text: "Request Access",
