@@ -48,8 +48,8 @@
 
 <form method="post">
 {{ govukTextarea({
-    name: "request-detail",
-    id: "request-detail",
+    name: "requestDetail",
+    id: "requestDetail",
     spellcheck: true,
     label: {
         text: "Please explain why access to the data is required",
@@ -59,6 +59,9 @@
         text: "Make sure to include details about how the data will be used"
     }
 }) }}
+
+<input type="hidden" id="dataItemId" name="dataItemId" value="{{ dataItem.id }}">
+
 
 {{ govukButton({
     text: "Submit",

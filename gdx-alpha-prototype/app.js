@@ -85,7 +85,11 @@ app.get("/requestaccess", (req, res) => {
 });
 
 app.post("/requestaccess", (req, res) => {
-  dataRequests.createRequest({ detail: req.body.detail });
+  dataRequests.createRequest({
+    requestingUser: req.session.user,
+    dataItemId: req.body.dataItemId,
+    detail: req.body.requestDetail,
+  });
   res.redirect("requestconfirmation");
 });
 

@@ -58,7 +58,7 @@ exports.catalogue = new CatalogueService([
     name: "Passport Information",
     description: "Information about passport details.",
     email: "support@example.com",
-    department: "HOME OFFICE",
+    department: "Home Office",
     tags: ["api", "passport"],
   },
 ]);
