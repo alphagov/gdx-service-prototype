@@ -9,6 +9,7 @@ const port = 3000;
 
 const catalogue = service.catalogue;
 const dataRequests = service.dataRequests;
+const users = service.users;
 
 app.use(express.urlencoded({ extended: true }));
 
@@ -30,8 +31,15 @@ app.get("/", (req, res) => {
 
 app.post("/login", (req, res) => {
   req.session.regenerate(() => {
-    req.session.user = req.body.user;
-    res.redirect("dashboard");
+    const username = req.body.user;
+    const user = users.fetchUserByName(username);
+    if (user != null) {
+      req.session.user = user;
+      res.redirect("dashboard");
+    } else {
+      //TODO: Show a login error
+      res.redirect("/");
+    }
   });
 });
 

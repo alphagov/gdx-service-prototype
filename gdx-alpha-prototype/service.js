@@ -21,6 +21,18 @@ class DataRequestService {
   }
 }
 
+class UserService {
+  #usersById;
+
+  constructor(users) {
+    this.usersById = Object.fromEntries(users.map((u) => [u.name, u]));
+  }
+
+  fetchUserByName(userName) {
+    return this.usersById[userName];
+  }
+}
+
 class CatalogueService {
   #datasetsById;
 
@@ -68,5 +80,16 @@ exports.catalogue = new CatalogueService([
     email: "support@example.com",
     department: "Home Office",
     tags: ["api", "passport"],
+  },
+]);
+
+exports.users = new UserService([
+  {
+    name: "Alice",
+    deparment: "DWP",
+  },
+  {
+    name: "Bill",
+    deparment: "HMRC",
   },
 ]);
