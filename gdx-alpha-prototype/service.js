@@ -16,7 +16,11 @@ class DataRequestService {
   fetchAllSummaries() {
     return Object.values(this.requestsById).map((r) => {
       //TODO: Dept, dataset name and date?
-      return { id: r.id, requestingUser: r.requestingUser };
+      return {
+        id: r.id,
+        requestingUser: r.requestingUser,
+        datasetName: r.datasetName,
+      };
     });
   }
 }

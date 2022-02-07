@@ -6,9 +6,9 @@
 <h1 class="govuk-heading-l">Data Requests</h1>
 
 <ul class="govuk-list">
-    {% for request in dataRequests %}
+    {% for r in dataRequests %}
     <li>
-        <a class="govuk-link" href="/requests/{{ request.id }}">{{ request.requestingUser }}</a>
+        <a class="govuk-link" href="/requests/{{ r.id }}">{{ r.datasetName }} - {{ r.requestingUser.name }} ({{ r.requestingUser.deparment }})</a>
     </li>
     {% endfor %}
 </ul>

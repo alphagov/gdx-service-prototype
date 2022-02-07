@@ -93,9 +93,12 @@ app.get("/requestaccess", (req, res) => {
 });
 
 app.post("/requestaccess", (req, res) => {
+  const datasetId = req.body.datasetId;
+  const datasetName = catalogue.fetchById(datasetId).name;
   dataRequests.createRequest({
     requestingUser: req.session.user,
-    datasetId: req.body.datasetId,
+    datasetId: datasetId,
+    datasetName: datasetName,
     detail: req.body.requestDetail,
   });
   res.redirect("requestconfirmation");
