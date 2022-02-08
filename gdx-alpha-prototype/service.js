@@ -13,9 +13,12 @@ class DataRequestService {
     this.requestCount += 1;
   }
 
+  fetchById(id) {
+    return this.requestsById[id];
+  }
+
   fetchAllSummaries() {
     return Object.values(this.requestsById).map((r) => {
-      //TODO: Dept, dataset name and date?
       return {
         id: r.id,
         requestingUser: r.requestingUser,

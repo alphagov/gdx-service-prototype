@@ -1,0 +1,10 @@
+{% extends "base.html.njk" %}
+{% block pageTitle %}GDX - Access Request{% endblock %}
+
+
+{% block content %}
+<h1 class="govuk-heading-l">Access Request</h1>
+<p class="govuk-body">
+{{ dataRequest.datasetName }} - {{ dataRequest.requestingUser.name }} ({{ dataRequest.requestingUser.deparment }})
+</p>
+{% endblock %}

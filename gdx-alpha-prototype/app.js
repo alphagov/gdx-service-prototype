@@ -115,6 +115,14 @@ app.get("/requests", (req, res) => {
   });
 });
 
+app.get("/requests/:requestId", (req, res) => {
+  const dataRequest = dataRequests.fetchById(req.params.requestId);
+  res.render("request.html.njk", {
+    user: req.session.user,
+    dataRequest: dataRequest,
+  });
+});
+
 function localAsset(assetPath) {
   return express.static(path.join(__dirname, assetPath));
 }
