@@ -4,6 +4,7 @@ const path = require("path");
 const service = require("./service.js");
 const session = require("express-session");
 const crypto = require("crypto");
+const flash = require('connect-flash');
 const app = express();
 const port = 3000;
 
@@ -18,15 +19,18 @@ app.use(
     secret: crypto.randomBytes(32).toString("hex"),
     resave: false,
     saveUninitialized: false,
+    cookie: {maxAge: 60000},
   })
 );
+
+app.use(flash());
 
 nunjucks.configure(["templates", "node_modules/govuk-frontend/"], {
   express: app,
 });
 
 app.get("/", (req, res) => {
-  res.render("index.html.njk");
+  res.render("index.html.njk", { error_messages: req.flash('error') });
 });
 
 app.post("/login", (req, res) => {
@@ -37,7 +41,7 @@ app.post("/login", (req, res) => {
       req.session.user = user;
       res.redirect("dashboard");
     } else {
-      //TODO: Show a login error
+      req.flash('error', 'No such user')
       res.redirect("/");
     }
   });
@@ -100,6 +104,9 @@ app.post("/requestaccess", (req, res) => {
     datasetId: datasetId,
     datasetName: datasetName,
     detail: req.body.requestDetail,
+    legalBasis: req.body.legalBasis,
+    approved: false,
+    requestDate: new Date(),
   });
   res.redirect("requestconfirmation");
 });

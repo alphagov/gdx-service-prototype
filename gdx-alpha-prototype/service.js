@@ -61,16 +61,18 @@ class CatalogueService {
     return Object.keys(this.datasetsById).length;
   }
 }
+
 exports.dataRequests = new DataRequestService();
 
 exports.catalogue = new CatalogueService([
   {
     id: "death-events",
     name: "Death Events",
-    description: "About death",
+    description: "This is a dataset based on an event driven architecture which publishes events representing deaths",
     email: "support@example.com",
     department: "GRO",
     tags: ["events", "death"],
+    confidence: "High",
   },
   {
     id: "debt-events",
@@ -79,6 +81,7 @@ exports.catalogue = new CatalogueService([
     email: "support@example.com",
     department: "HMRC",
     tags: ["events", "debt"],
+    confidence: "Medium",
   },
   {
     id: "passport-office-api",
@@ -87,16 +90,17 @@ exports.catalogue = new CatalogueService([
     email: "support@example.com",
     department: "Home Office",
     tags: ["api", "passport"],
+    confidence: "Low",
   },
 ]);
 
 exports.users = new UserService([
   {
     name: "Alice",
-    deparment: "DWP",
+    department: "DWP",
   },
   {
     name: "Bill",
-    deparment: "HMRC",
+    department: "HMRC",
   },
 ]);

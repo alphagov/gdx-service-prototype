@@ -1,4 +1,4 @@
 node_modules
-
+.idea/
 # CSS is generated from SASS
 css

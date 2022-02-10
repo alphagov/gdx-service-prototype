@@ -1,10 +1,64 @@
 {% extends "base.html.njk" %}
 {% block pageTitle %}GDX - Access Request{% endblock %}
 
-
 {% block content %}
+
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+
+
 <h1 class="govuk-heading-l">Access Request</h1>
-<p class="govuk-body">
-{{ dataRequest.datasetName }} - {{ dataRequest.requestingUser.name }} ({{ dataRequest.requestingUser.deparment }})
-</p>
+
+{{ govukSummaryList({
+  rows: [
+        {
+          key: {
+            text: "Requesting user"
+          },
+          value: {
+            text: dataRequest.requestingUser.name
+          }
+        },
+        {
+          key: {
+            text: "Requesting department"
+          },
+          value: {
+            text: dataRequest.requestingUser.department
+          }
+        },
+        {
+          key: {
+            text: "Dataset"
+          },
+          value: {
+            text: dataRequest.datasetName
+          }
+        },
+        {
+          key: {
+            text: "Request date"
+          },
+          value: {
+            html: dataRequest.requestDate.toLocaleDateString("en-GB")
+          }
+        },
+        {
+          key: {
+            text: "Request details"
+          },
+          value: {
+            html: dataRequest.detail
+          }
+        },
+        {
+          key: {
+            text: "Legal basis"
+          },
+          value: {
+            html: dataRequest.legalBasis
+          }
+        }
+    ]
+}) }}
+
 {% endblock %}

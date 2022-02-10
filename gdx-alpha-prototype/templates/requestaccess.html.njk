@@ -16,7 +16,7 @@
                 text: "Requesting Department"
             },
                 value: {
-                text: user.deparment
+                text: user.department
             }
             },
             {
@@ -58,6 +58,28 @@
     hint: {
         text: "Make sure to include details about how the data will be used"
     }
+}) }}
+{{ govukTextarea({
+    name: "legalBasis",
+    id: "legalBasis",
+    spellcheck: true,
+    label: {
+        text: "Please explain the legal basis you have for accessing the data",
+        classes: "govuk-label--m"
+    },
+    hint: {
+        text: "For example, you might use the Digital Economy Act"
+    }
+}) }}
+
+{% from "govuk/components/file-upload/macro.njk" import govukFileUpload %}
+
+{{ govukFileUpload({
+  id: "file-upload-1",
+  name: "file-upload-1",
+  label: {
+    text: "If you have a Data Sharing Agreement, attach it here"
+  }
 }) }}
 
 <input type="hidden" id="datasetId" name="datasetId" value="{{ dataset.id }}">

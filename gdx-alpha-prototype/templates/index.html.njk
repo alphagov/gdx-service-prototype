@@ -3,6 +3,7 @@
 {% from "govuk/components/button/macro.njk" import govukButton %}
 {% from "govuk/components/warning-text/macro.njk" import govukWarningText %}
 {% from "govuk/components/input/macro.njk" import govukInput %}
+{% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
 
 {% block pageTitle %}GDX - Login{% endblock %}
 
@@ -11,9 +12,23 @@
     <p class="govuk-body">Welcome to the GDX prototype.</p>
 
     {{ govukWarningText({
-      text: "This is a mock up of how the GDX user experiance might work, not a functioning production service.",
+      text: "This is a mock up of how the GDX user experience might work, not a functioning production service.",
       iconFallbackText: "Warning"
     }) }}
+
+{% if (error_messages.length > 0) %}
+
+{{ govukErrorSummary({
+  titleText: "There is a problem",
+  errorList: [
+    {
+      text: error_messages[0],
+      href: "#user"
+    }
+  ]
+}) }}
+
+{% endif %}
 
 <form method=post action="/login">
 {{ govukInput({
