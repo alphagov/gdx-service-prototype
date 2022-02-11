@@ -30,7 +30,9 @@ nunjucks.configure(["templates", "node_modules/govuk-frontend/"], {
 });
 
 app.get("/", (req, res) => {
-  res.render("index.html.njk", { error_messages: req.flash('error') });
+  res.render("index.html.njk", {
+     error_messages: req.flash('error')
+   });
 });
 
 app.post("/login", (req, res) => {
@@ -104,21 +106,40 @@ app.post("/requestaccess", (req, res) => {
     datasetId: datasetId,
     datasetName: datasetName,
     detail: req.body.requestDetail,
+    use: req.body.use,
     legalBasis: req.body.legalBasis,
     approved: false,
     requestDate: new Date(),
   });
+  req.flash('success', 'Thank you, your request has been submitted')
   res.redirect("requestconfirmation");
 });
 
 app.get("/requestconfirmation", (req, res) => {
-  res.render("requestconfirmation.html.njk", { user: req.session.user });
+  res.render("requestconfirmation.html.njk", {
+     user: req.session.user,
+     success_messages: req.flash('success')
+   });
 });
 
 app.get("/requests", (req, res) => {
+  allRequests = dataRequests.fetchAllSummaries();
+  if (allRequests.length == 0){
+    dataRequests.createRequest({
+        requestingUser: req.session.user,
+        datasetId: 'death-events',
+        datasetName: 'Death Events',
+        detail: 'Request for data',
+        use: 'The data will be used for x',
+        legalBasis: 'consent',
+        approved: false,
+        requestDate: new Date(),
+        })
+    allRequests = dataRequests.fetchAllSummaries();
+  }
   res.render("requests.html.njk", {
     user: req.session.user,
-    dataRequests: dataRequests.fetchAllSummaries(),
+    dataRequests: allRequests,
   });
 });
 

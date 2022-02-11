@@ -72,16 +72,22 @@ exports.catalogue = new CatalogueService([
     email: "support@example.com",
     department: "GRO",
     tags: ["events", "death"],
-    confidence: "High",
+    sensitivity: "High",
+    techRequirements: "Apache Kafka",
+    legalOpsRequirements: "TBC",
+    otherRequirements: "TBC"
   },
   {
     id: "debt-events",
     name: "Debt Events",
-    description: "About what you owe",
+    description: "This is a dataset containing information about what you owe",
     email: "support@example.com",
     department: "HMRC",
     tags: ["events", "debt"],
-    confidence: "Medium",
+    sensitivity: "Medium",
+    techRequirements: "Apache Kafka",
+    legalOpsRequirements: "TBC",
+    otherRequirements: "TBC"
   },
   {
     id: "passport-office-api",
@@ -90,7 +96,10 @@ exports.catalogue = new CatalogueService([
     email: "support@example.com",
     department: "Home Office",
     tags: ["api", "passport"],
-    confidence: "Low",
+    sensitivity: "Low",
+    techRequirements: "JSON API",
+    legalOpsRequirements: "TBC",
+    otherRequirements: "TBC"
   },
 ]);
 

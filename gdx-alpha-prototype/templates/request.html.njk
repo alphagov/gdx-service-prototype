@@ -4,6 +4,7 @@
 {% block content %}
 
 {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
 
 
 <h1 class="govuk-heading-l">Access Request</h1>
@@ -52,13 +53,26 @@
         },
         {
           key: {
-            text: "Legal basis"
+            text: "What the data will be used for"
+          },
+          value: {
+            html: dataRequest.use
+          }
+        },
+        {
+          key: {
+            text: "What is the legal basis for accessing the data"
           },
           value: {
             html: dataRequest.legalBasis
           }
         }
     ]
+}) }}
+
+{{ govukButton({
+    text: "Approve this request",
+    preventDoubleClick: true
 }) }}
 
 {% endblock %}

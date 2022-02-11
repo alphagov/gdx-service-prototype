@@ -3,6 +3,8 @@
 {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
 {% from "govuk/components/textarea/macro.njk" import govukTextarea %}
 {% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/file-upload/macro.njk" import govukFileUpload %}
+{% from "govuk/components/radios/macro.njk" import govukRadios %}
 
 {% block pageTitle %}GDX - Request Access{% endblock %}
 
@@ -52,27 +54,56 @@
     id: "requestDetail",
     spellcheck: true,
     label: {
-        text: "Please explain why access to the data is required",
+        text: "Please explain the reason for requesting",
         classes: "govuk-label--m"
     },
     hint: {
-        text: "Make sure to include details about how the data will be used"
+        text: "For example, is it a new project or initiative?"
     }
 }) }}
 {{ govukTextarea({
-    name: "legalBasis",
-    id: "legalBasis",
+    name: "use",
+    id: "use",
     spellcheck: true,
     label: {
-        text: "Please explain the legal basis you have for accessing the data",
+        text: "Please explain what the data is going to be used for",
         classes: "govuk-label--m"
     },
     hint: {
-        text: "For example, you might use the Digital Economy Act"
+        text: "How will the data be consumed, and by how many teams?"
     }
+
 }) }}
 
-{% from "govuk/components/file-upload/macro.njk" import govukFileUpload %}
+
+{{ govukRadios({
+  idPrefix: "legal-basis",
+  name: "legalBasis",
+  fieldset: {
+    legend: {
+      text: "What is your legal basis for accessing the data?",
+      classes: "govuk-fieldset__legend--m"
+    }
+  },
+  items: [
+    {
+      value: "consent",
+      text: "Consent"
+    },
+    {
+      value: "digital-economy-act",
+      text: "Digital Economy Act"
+    },
+    {
+      value: "public-task",
+      text: "Public Task"
+    },
+    {
+      value: "data-sharing-agreement",
+      text: "Data Sharing Agreement"
+    }
+  ]
+}) }}
 
 {{ govukFileUpload({
   id: "file-upload-1",

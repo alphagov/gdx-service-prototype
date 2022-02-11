@@ -45,10 +45,34 @@
     },
     {
       key: {
-        text: "Confidence"
+        text: "Sensitivity"
       },
       value: {
-        html: dataset.confidence
+        html: dataset.sensitivity + " - for further information on what this means, visit <a href='#'>here</a>"
+      }
+    },
+    {
+      key: {
+        text: "Technical requirements"
+      },
+      value: {
+        html: dataset.techRequirements
+      }
+    },
+    {
+      key: {
+        text: "Legal and ops requirements"
+      },
+      value: {
+        html: dataset.legalOpsRequirements
+      }
+    },
+    {
+      key: {
+        text: "Other requirements"
+      },
+      value: {
+        html: dataset.otherRequirements
       }
     }
   ]
