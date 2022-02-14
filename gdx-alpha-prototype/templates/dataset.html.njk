@@ -42,17 +42,72 @@
       value: {
         html: dataset.tags | join(', ')
       }
+    },
+    {
+      key: {
+        text: "Sensitivity"
+      },
+      value: {
+        html: dataset.sensitivity + " - for further information on what this means, visit <a href='#'>here</a>"
+      }
+    },
+    {
+      key: {
+        text: "Technical requirements"
+      },
+      value: {
+        html: dataset.techRequirements
+      }
+    },
+    {
+      key: {
+        text: "Legal and ops requirements"
+      },
+      value: {
+        html: dataset.legalOpsRequirements
+      }
+    },
+    {
+      key: {
+        text: "Other requirements"
+      },
+      value: {
+        html: dataset.otherRequirements
+      }
     }
   ]
 }) }}
+
+
+
+
 
 {% from "govuk/components/button/macro.njk" import govukButton %}
   {% set requestUrl = ["/requestaccess?dataset=", dataset.id] | join %}
 <div class="govuk-button-group">
   {{ govukButton({
-    text: "Request Access",
+    text: "Request Access to this Dataset",
     href: requestUrl
   }) }}
 </div>
+
+<div>
+  <h2 class="govuk-heading-m">Before you start</h2>
+    <p class="govuk-body">You will need:
+    </p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>
+        The reason you want to access the data
+      </li>
+      <li>
+        The legal basis you have for accessing the data
+      </li>
+      <li>
+        The data sharing agreement (if applicable)
+      </li>
+
+    </ul>
+</div>
+
 
 {% endblock %}

@@ -4,8 +4,9 @@ const path = require("path");
 const service = require("./service.js");
 const session = require("express-session");
 const crypto = require("crypto");
+const flash = require("connect-flash");
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 const catalogue = service.catalogue;
 const dataRequests = service.dataRequests;
@@ -18,15 +19,20 @@ app.use(
     secret: crypto.randomBytes(32).toString("hex"),
     resave: false,
     saveUninitialized: false,
+    cookie: { maxAge: 60000 },
   })
 );
+
+app.use(flash());
 
 nunjucks.configure(["templates", "node_modules/govuk-frontend/"], {
   express: app,
 });
 
 app.get("/", (req, res) => {
-  res.render("index.html.njk");
+  res.render("index.html.njk", {
+    error_messages: req.flash("error"),
+  });
 });
 
 app.post("/login", (req, res) => {
@@ -37,7 +43,7 @@ app.post("/login", (req, res) => {
       req.session.user = user;
       res.redirect("dashboard");
     } else {
-      //TODO: Show a login error
+      req.flash("error", "No such user");
       res.redirect("/");
     }
   });
@@ -100,18 +106,40 @@ app.post("/requestaccess", (req, res) => {
     datasetId: datasetId,
     datasetName: datasetName,
     detail: req.body.requestDetail,
+    use: req.body.use,
+    legalBasis: req.body.legalBasis,
+    approved: false,
+    requestDate: new Date(),
   });
+  req.flash("success", "Thank you, your request has been submitted");
   res.redirect("requestconfirmation");
 });
 
 app.get("/requestconfirmation", (req, res) => {
-  res.render("requestconfirmation.html.njk", { user: req.session.user });
+  res.render("requestconfirmation.html.njk", {
+    user: req.session.user,
+    success_messages: req.flash("success"),
+  });
 });
 
 app.get("/requests", (req, res) => {
+  allRequests = dataRequests.fetchAllSummaries();
+  if (allRequests.length == 0) {
+    dataRequests.createRequest({
+      requestingUser: req.session.user,
+      datasetId: "death-events",
+      datasetName: "Death Events",
+      detail: "Request for data",
+      use: "The data will be used for x",
+      legalBasis: "consent",
+      approved: false,
+      requestDate: new Date(),
+    });
+    allRequests = dataRequests.fetchAllSummaries();
+  }
   res.render("requests.html.njk", {
     user: req.session.user,
-    dataRequests: dataRequests.fetchAllSummaries(),
+    dataRequests: allRequests,
   });
 });
 

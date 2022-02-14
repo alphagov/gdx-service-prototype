@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "connect-flash": "^0.1.1",
     "express": "^4.17.2",
     "express-session": "^1.17.2",
     "govuk-frontend": "^4.0.0",
@@ -11,7 +12,8 @@
   "scripts": {
     "sass": "sass node_modules/govuk-frontend/govuk/all.scss css/all.css",
     "dev": "nodemon -e js,html,njk app.js",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "prod": "node app.js"
   },
   "author": "",
   "description": "",

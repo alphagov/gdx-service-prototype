@@ -61,24 +61,34 @@ class CatalogueService {
     return Object.keys(this.datasetsById).length;
   }
 }
+
 exports.dataRequests = new DataRequestService();
 
 exports.catalogue = new CatalogueService([
   {
     id: "death-events",
     name: "Death Events",
-    description: "About death",
+    description:
+      "This is a dataset based on an event driven architecture which publishes events representing deaths",
     email: "support@example.com",
     department: "GRO",
     tags: ["events", "death"],
+    sensitivity: "High",
+    techRequirements: "Apache Kafka",
+    legalOpsRequirements: "TBC",
+    otherRequirements: "TBC",
   },
   {
     id: "debt-events",
     name: "Debt Events",
-    description: "About what you owe",
+    description: "This is a dataset containing information about what you owe",
     email: "support@example.com",
     department: "HMRC",
     tags: ["events", "debt"],
+    sensitivity: "Medium",
+    techRequirements: "Apache Kafka",
+    legalOpsRequirements: "TBC",
+    otherRequirements: "TBC",
   },
   {
     id: "passport-office-api",
@@ -87,16 +97,20 @@ exports.catalogue = new CatalogueService([
     email: "support@example.com",
     department: "Home Office",
     tags: ["api", "passport"],
+    sensitivity: "Low",
+    techRequirements: "JSON API",
+    legalOpsRequirements: "TBC",
+    otherRequirements: "TBC",
   },
 ]);
 
 exports.users = new UserService([
   {
-    name: "Alice",
-    deparment: "DWP",
+    name: "Charlie",
+    department: "DWP",
   },
   {
-    name: "Bill",
-    deparment: "HMRC",
+    name: "Kartheek",
+    department: "HMRC",
   },
 ]);
