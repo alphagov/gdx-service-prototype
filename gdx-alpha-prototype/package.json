@@ -12,7 +12,8 @@
   "scripts": {
     "sass": "sass node_modules/govuk-frontend/govuk/all.scss css/all.css",
     "dev": "nodemon -e js,html,njk app.js",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "prod": "node app.js"
   },
   "author": "",
   "description": "",

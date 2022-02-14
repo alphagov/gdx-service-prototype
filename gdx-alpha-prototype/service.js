@@ -68,14 +68,15 @@ exports.catalogue = new CatalogueService([
   {
     id: "death-events",
     name: "Death Events",
-    description: "This is a dataset based on an event driven architecture which publishes events representing deaths",
+    description:
+      "This is a dataset based on an event driven architecture which publishes events representing deaths",
     email: "support@example.com",
     department: "GRO",
     tags: ["events", "death"],
     sensitivity: "High",
     techRequirements: "Apache Kafka",
     legalOpsRequirements: "TBC",
-    otherRequirements: "TBC"
+    otherRequirements: "TBC",
   },
   {
     id: "debt-events",
@@ -87,7 +88,7 @@ exports.catalogue = new CatalogueService([
     sensitivity: "Medium",
     techRequirements: "Apache Kafka",
     legalOpsRequirements: "TBC",
-    otherRequirements: "TBC"
+    otherRequirements: "TBC",
   },
   {
     id: "passport-office-api",
@@ -99,17 +100,17 @@ exports.catalogue = new CatalogueService([
     sensitivity: "Low",
     techRequirements: "JSON API",
     legalOpsRequirements: "TBC",
-    otherRequirements: "TBC"
+    otherRequirements: "TBC",
   },
 ]);
 
 exports.users = new UserService([
   {
-    name: "Alice",
+    name: "Charlie",
     department: "DWP",
   },
   {
-    name: "Bill",
+    name: "Kartheek",
     department: "HMRC",
   },
 ]);

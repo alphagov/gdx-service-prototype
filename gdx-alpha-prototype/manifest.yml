@@ -1,0 +1,6 @@
+applications:
+  - name: gdx-alpha-prototype
+    command: npm run prod
+    memory: 64M
+    buildpacks:
+      - nodejs_buildpack
