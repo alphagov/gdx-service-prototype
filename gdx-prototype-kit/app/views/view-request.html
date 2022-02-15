@@ -1,0 +1,103 @@
+{% extends "layout.html" %}
+{% block pageTitle %}GDX - Access Request{% endblock %}
+
+{% block content %}
+
+<h1 class="govuk-heading-l">Access Request</h1>
+
+{{ govukSummaryList({
+  rows: [
+        {
+          key: {
+            text: "Requesting user"
+          },
+          value: {
+            text: "Charlie Wren"
+          }
+        },
+        {
+          key: {
+            text: "Requesting department"
+          },
+          value: {
+            text: "DWP"
+          }
+        },
+        {
+          key: {
+            text: "Dataset"
+          },
+          value: {
+            text: "Death Events"
+          }
+        },
+        {
+          key: {
+            text: "Request date"
+          },
+          value: {
+            text: "16/02/2022"
+          }
+        },
+        {
+          key: {
+            text: "Request details"
+          },
+          value: {
+            html: "Give me data"
+          }
+        },
+        {
+          key: {
+            text: "What the data will be used for"
+          },
+          value: {
+            html: "Linking stuff"
+          }
+        },
+        {
+          key: {
+            text: "What is the legal basis for accessing the data"
+          },
+          value: {
+            html: "Digital Economy Act"
+          }
+        }
+    ]
+}) }}
+
+<form method=post action="/check-answer">
+{{ govukRadios({
+  idPrefix: "approval",
+  id: "approval-choice",
+  name: "approval-choice",
+  fieldset: {
+    legend: {
+      text: "How do you want to respond to this request?",
+      classes: "govuk-fieldset__legend--m"
+    }
+  },
+  items: [
+    {
+      value: "approve",
+      text: "Approve"
+    },
+    {
+      value: "deny",
+      text: "Deny"
+    },
+    {
+      value: "request-more-information",
+      text: "Request more information"
+    }
+  ]
+}) }}
+
+
+{{ govukButton({
+    text: "Submit",
+    preventDoubleClick: true
+}) }}
+</form>
+
+{% endblock %}

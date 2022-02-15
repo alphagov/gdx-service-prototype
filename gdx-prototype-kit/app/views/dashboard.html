@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}Home - {{serviceName}}{% endblock %}
+
+{% block content %}
+<h1 class="govuk-heading-l">GDX Dashboard for {{ data['user'] }}</h1>
+
+<ul class="govuk-list">
+    <li>
+        <a class="govuk-link" href="/shared">Data being shared</a>
+    </li>
+    <li>
+        <a class="govuk-link" href="/consumed">Data being consumed</a>
+    </li>
+    <li>
+        <a class="govuk-link" href="/catalogue">Catalogue of available data</a>
+    </li>
+    <li>
+        <a class="govuk-link" href="/requests">Requests for data</a>
+    </li>
+</ul>
+
+{% endblock %}

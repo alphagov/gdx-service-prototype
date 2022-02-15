@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}GDX - Catalogue{% endblock %}
+
+{% block content %}
+{{ govukBackLink({
+text: "Back",
+href: "/dashboard"
+}) }}
+<h1 class="govuk-heading-l">GDX Catalogue</h1>
+<p class="govuk-body">List of available data.</p>
+<p class="govuk-body">In the future, this will be integrated with the CDDO catalogue.</p>
+<p class="govuk-body">There are currently 3 datasets available via GDX.</p>
+<ul class="govuk-list">
+    <li>
+        <a class = "govuk-link" href="/dataset">Death events</a>
+    </li>
+    <li>
+        <a class = "govuk-link" href="/dataset">Debt events</a>
+    </li>
+    <li>
+        <a class = "govuk-link" href="/dataset">Passport information</a>
+    </li>
+</ul>
+
+{% endblock %}
