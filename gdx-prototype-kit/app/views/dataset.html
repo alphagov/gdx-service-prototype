@@ -12,8 +12,8 @@ text: "Back",
 href: "/catalogue"
 }) }}
 
-    <h1 class="govuk-heading-l">Death events</h1>
-    <p class="govuk-body-m">This is a dataset based on an event driven architecture which publishes events representing deaths</p>
+    <h1 class="govuk-heading-l">{{ data['dataset-name'] }}</h1>
+    <p class="govuk-body-m">{{ data['dataset-description'] }}</p>
 
 
 {{ govukSummaryList({
@@ -23,7 +23,7 @@ href: "/catalogue"
         text: "Email"
       },
       value: {
-        text: "support@example.com"
+        html: data['dataset-email-contact']
       }
     },
     {
@@ -31,7 +31,7 @@ href: "/catalogue"
         text: "Department"
       },
       value: {
-        text: "GRO"
+        html: data['dataset-department']
       }
     },
     {
@@ -39,7 +39,7 @@ href: "/catalogue"
         text: "Tags"
       },
       value: {
-        text: "Events, Death"
+        text: data['dataset-tags']
       }
     },
     {
@@ -47,7 +47,7 @@ href: "/catalogue"
         text: "Sensitivity"
       },
       value: {
-        html: "High - for further information on what this means, visit <a href='#'>here</a>"
+        html: data['dataset-sensitivity']
       }
     },
     {
@@ -55,7 +55,7 @@ href: "/catalogue"
         text: "Technical requirements"
       },
       value: {
-        html: "Apache Kafka"
+        html: data['dataset-technical-requirements']
       }
     },
     {
@@ -63,7 +63,7 @@ href: "/catalogue"
         text: "Legal and ops requirements"
       },
       value: {
-        html: "TBC"
+        text: data['dataset-legal-ops-requirements']
       }
     },
     {
@@ -71,7 +71,7 @@ href: "/catalogue"
         text: "Other requirements"
       },
       value: {
-        html: "TBC"
+        html: data['dataset-other-requirements']
       }
     }
   ]
@@ -80,7 +80,7 @@ href: "/catalogue"
 <div class="govuk-button-group">
   {{ govukButton({
     text: "Request Access to this Dataset",
-    href: "request-access"
+    href: "access-request"
   }) }}
 </div>
 
@@ -96,7 +96,7 @@ href: "/catalogue"
         The legal basis you have for accessing the data
       </li>
       <li>
-        The data sharing agreement (if applicable)
+        The data sharing agreement (optional)
       </li>
 
     </ul>

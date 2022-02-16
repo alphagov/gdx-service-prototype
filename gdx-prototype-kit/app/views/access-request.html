@@ -4,16 +4,30 @@
 {% block pageTitle %}GDX - Request Access{% endblock %}
 
 {% block content %}
+
+{{ govukBackLink({
+text: "Back",
+href: "/dataset"
+}) }}
+
 <h1 class="govuk-heading-m">Access Form</h1>
 
     {{ govukSummaryList({
         rows: [
             {
                 key: {
+                text: "Requesting User"
+            },
+                value: {
+                text: data['user']
+            }
+            },
+            {
+                key: {
                 text: "Requesting Department"
             },
                 value: {
-                text: "DWP"
+                text: data['requesting-department']
             }
             },
             {
@@ -21,7 +35,7 @@
                 text: "Requesting Department Email"
             },
                 value: {
-                text: "dwp@example.com"
+                text: data['requesting-department-email']
             }
             },
             {
@@ -29,7 +43,7 @@
                 text: "Dataset"
             },
                 value: {
-                html: "Death Events"
+                html: data['dataset-name']
             }
             },
             {
@@ -37,16 +51,17 @@
                 text: "Dataset Description"
             },
                 value: {
-                html: "This is a dataset based on an event driven architecture which publishes events representing deaths"
+                html: data['dataset-description']
             }
             }
         ]
     }) }}
 
-<form method="post">
+<form method="post" action="check-answers">
 {{ govukTextarea({
     name: "requestDetail",
     id: "requestDetail",
+    value: data['requestDetail'],
     spellcheck: true,
     label: {
         text: "Please explain the reason for requesting",
@@ -59,6 +74,7 @@
 {{ govukTextarea({
     name: "use",
     id: "use",
+    value: data['use'],
     spellcheck: true,
     label: {
         text: "Please explain what the data is going to be used for",

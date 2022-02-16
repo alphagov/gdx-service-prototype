@@ -20,7 +20,7 @@ router.post('/user-answer', function (req, res) {
 })
 
 
-router.get('/check-answer', function (req, res) {
+router.post('/check-answer', function (req, res) {
 
   var choice = req.session.data['approval-choice'];
   // Check whether the variable matches a condition

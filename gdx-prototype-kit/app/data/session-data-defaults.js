@@ -19,6 +19,19 @@ Example usage:
 
 module.exports = {
 
-  // Insert values here
+  // dataset defaults
+  "user": "Charlie",
+  "dataset-name": "Death Events",
+  "dataset-description": "This is a dataset based on an event driven architecture which publishes events representing deaths",
+  "dataset-email-contact": "support@gro.gov.uk",
+  "dataset-department": "GRO",
+  "dataset-tags": ["Death", "Events"],
+  "dataset-sensitivity": "High - for further information on what this means, visit <a href='#'>here</a>",
+  "dataset-technical-requirements": "Apache Kafka",
+  "dataset-legal-ops-requirements": "TBC",
+  "dataset-other-requirements": "TBC",
+  "requesting-department": "DWP",
+  "requesting-department-email": "example@dwp.gov.uk",
+  "request-date": new Date().toLocaleDateString(),
 
 }
