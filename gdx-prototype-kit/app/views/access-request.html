@@ -1,0 +1,133 @@
+{% extends "layout.html" %}
+
+
+{% block pageTitle %}GDX - Request Access{% endblock %}
+
+{% block content %}
+
+{{ govukBackLink({
+text: "Back",
+href: "/dataset"
+}) }}
+
+<h1 class="govuk-heading-m">Access Form</h1>
+
+    {{ govukSummaryList({
+        rows: [
+            {
+                key: {
+                text: "Requesting User"
+            },
+                value: {
+                text: data['user']
+            }
+            },
+            {
+                key: {
+                text: "Requesting Department"
+            },
+                value: {
+                text: data['requesting-department']
+            }
+            },
+            {
+                key: {
+                text: "Requesting Department Email"
+            },
+                value: {
+                text: data['requesting-department-email']
+            }
+            },
+            {
+                key: {
+                text: "Dataset"
+            },
+                value: {
+                html: data['dataset-name']
+            }
+            },
+            {
+                key: {
+                text: "Dataset Description"
+            },
+                value: {
+                html: data['dataset-description']
+            }
+            }
+        ]
+    }) }}
+
+<form method="post" action="check-answers">
+{{ govukTextarea({
+    name: "requestDetail",
+    id: "requestDetail",
+    value: data['requestDetail'],
+    spellcheck: true,
+    label: {
+        text: "Please explain the reason for requesting",
+        classes: "govuk-label--m"
+    },
+    hint: {
+        text: "For example, is it a new project or initiative?"
+    }
+}) }}
+{{ govukTextarea({
+    name: "use",
+    id: "use",
+    value: data['use'],
+    spellcheck: true,
+    label: {
+        text: "Please explain what the data is going to be used for",
+        classes: "govuk-label--m"
+    },
+    hint: {
+        text: "How will the data be consumed, and by how many teams?"
+    }
+
+}) }}
+
+
+{{ govukRadios({
+  idPrefix: "legal-basis",
+  name: "legalBasis",
+  fieldset: {
+    legend: {
+      text: "What is your legal basis for accessing the data?",
+      classes: "govuk-fieldset__legend--m"
+    }
+  },
+  items: [
+    {
+      value: "consent",
+      text: "Consent"
+    },
+    {
+      value: "digital-economy-act",
+      text: "Digital Economy Act"
+    },
+    {
+      value: "public-task",
+      text: "Public Task"
+    },
+    {
+      value: "data-sharing-agreement",
+      text: "Data Sharing Agreement"
+    }
+  ]
+}) }}
+
+{{ govukFileUpload({
+  id: "file-upload-1",
+  name: "file-upload-1",
+  label: {
+    text: "If you have a Data Sharing Agreement, attach it here"
+  }
+}) }}
+
+
+{{ govukButton({
+    text: "Submit",
+    preventDoubleClick: true
+}) }}
+</form>
+{% endblock %}

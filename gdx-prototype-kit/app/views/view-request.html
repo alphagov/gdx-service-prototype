@@ -1,0 +1,108 @@
+{% extends "layout.html" %}
+{% block pageTitle %}GDX - Access Request{% endblock %}
+
+{% block content %}
+
+{{ govukBackLink({
+text: "Back",
+href: "/requests"
+}) }}
+
+<h1 class="govuk-heading-l">Access Request</h1>
+
+{{ govukSummaryList({
+  rows: [
+        {
+          key: {
+            text: "Requesting user"
+          },
+          value: {
+            text: "Charlie Wren"
+          }
+        },
+        {
+          key: {
+            text: "Requesting department"
+          },
+          value: {
+            text: "DWP"
+          }
+        },
+        {
+          key: {
+            text: "Dataset"
+          },
+          value: {
+            text: "Death Events"
+          }
+        },
+        {
+          key: {
+            text: "Request date"
+          },
+          value: {
+            text: data['request-date']
+          }
+        },
+        {
+          key: {
+            text: "Request details"
+          },
+          value: {
+            html: "We (DWP) need to access this data in order to utilise several critical services such as Tell Us Once"
+          }
+        },
+        {
+          key: {
+            text: "What the data will be used for"
+          },
+          value: {
+            html: "We (DWP) will use the data as an asset in the Tell Us Once service which informs other DWP services about deaths"
+          }
+        },
+        {
+          key: {
+            text: "What is the legal basis for accessing the data"
+          },
+          value: {
+            html: "Digital Economy Act"
+          }
+        }
+    ]
+}) }}
+
+<form method=post action="/check-answer">
+{{ govukRadios({
+  idPrefix: "approval",
+  id: "approval-choice",
+  name: "approval-choice",
+  fieldset: {
+    legend: {
+      text: "How do you want to respond to this request?",
+      classes: "govuk-fieldset__legend--m"
+    }
+  },
+  items: [
+    {
+      value: "approve",
+      text: "Approve"
+    },
+    {
+      value: "deny",
+      text: "Deny"
+    },
+    {
+      value: "request-more-information",
+      text: "Request more information"
+    }
+  ]
+}) }}
+
+
+{{ govukButton({
+    text: "Submit",
+    preventDoubleClick: true
+}) }}
+</form>
+
+{% endblock %}

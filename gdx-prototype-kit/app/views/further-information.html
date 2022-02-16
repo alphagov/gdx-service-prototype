@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+
+{% block pageTitle %}GDX - Request Access{% endblock %}
+
+{% block content %}
+
+{{ govukBackLink({
+text: "Back",
+href: "/view-request"
+}) }}
+
+<form method="post" action="/further-information-confirmation">
+{{ govukTextarea({
+    name: "furtherInformation",
+    id: "furtherInformation",
+    spellcheck: true,
+    label: {
+        text: "What further information would you like",
+        classes: "govuk-label--m"
+    },
+    hint: {
+        text: "For example, have they provided enough security details?"
+    }
+}) }}
+
+
+{{ govukButton({
+    text: "Submit",
+    preventDoubleClick: true
+}) }}
+</form>
+{% endblock %}

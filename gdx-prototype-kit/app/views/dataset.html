@@ -1,0 +1,106 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}GDX - Dataset{% endblock %}
+
+
+{% block content %}
+
+
+{{ govukBackLink({
+text: "Back",
+href: "/catalogue"
+}) }}
+
+    <h1 class="govuk-heading-l">{{ data['dataset-name'] }}</h1>
+    <p class="govuk-body-m">{{ data['dataset-description'] }}</p>
+
+
+{{ govukSummaryList({
+  rows: [
+    {
+      key: {
+        text: "Email"
+      },
+      value: {
+        html: data['dataset-email-contact']
+      }
+    },
+    {
+      key: {
+        text: "Department"
+      },
+      value: {
+        html: data['dataset-department']
+      }
+    },
+    {
+      key: {
+        text: "Tags"
+      },
+      value: {
+        text: data['dataset-tags']
+      }
+    },
+    {
+      key: {
+        text: "Sensitivity"
+      },
+      value: {
+        html: data['dataset-sensitivity']
+      }
+    },
+    {
+      key: {
+        text: "Technical requirements"
+      },
+      value: {
+        html: data['dataset-technical-requirements']
+      }
+    },
+    {
+      key: {
+        text: "Legal and ops requirements"
+      },
+      value: {
+        text: data['dataset-legal-ops-requirements']
+      }
+    },
+    {
+      key: {
+        text: "Other requirements"
+      },
+      value: {
+        html: data['dataset-other-requirements']
+      }
+    }
+  ]
+}) }}
+
+<div class="govuk-button-group">
+  {{ govukButton({
+    text: "Request Access to this Dataset",
+    href: "access-request"
+  }) }}
+</div>
+
+<div>
+  <h2 class="govuk-heading-m">Before you start</h2>
+    <p class="govuk-body">You will need:
+    </p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>
+        The reason you want to access the data
+      </li>
+      <li>
+        The legal basis you have for accessing the data
+      </li>
+      <li>
+        The data sharing agreement (optional)
+      </li>
+
+    </ul>
+</div>
+
+
+{% endblock %}
