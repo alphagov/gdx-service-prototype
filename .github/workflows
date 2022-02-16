@@ -38,6 +38,7 @@ jobs:
           cf target -o "${CF_ORG}" -s "${CF_SPACE}"
 
       - name: Deploy to PaaS
+	working-directory: ./gdx-prototype-kit
         run: |
           cf push -f manifest.yml --strategy rolling
           cf logout
