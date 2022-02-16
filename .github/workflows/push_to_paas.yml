@@ -1,4 +1,4 @@
-name: push-to-paas
+name: push_to_paas
 
 on:
   push:
