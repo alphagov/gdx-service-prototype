@@ -27,7 +27,7 @@ module.exports = {
   "dataset-department": "GRO",
   "dataset-tags": ["Death", "Events"],
   "dataset-sensitivity": "High - for further information on what this means, visit <a href='#'>here</a>",
-  "dataset-technical-requirements": "Apache Kafka",
+  "dataset-technical-requirements": "Events based technical protocol",
   "dataset-legal-ops-requirements": "TBC",
   "dataset-other-requirements": "TBC",
   "requesting-department": "DWP",
