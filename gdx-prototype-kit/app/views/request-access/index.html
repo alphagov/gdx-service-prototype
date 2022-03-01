@@ -1,0 +1,33 @@
+
+{% extends "request-access/layout.html" %}
+
+{% block pageTitle %}
+  Home – GOV.UK
+{% endblock %}
+
+{% block content %}
+    <h1 class="govuk-heading-xl">GDX</h1>
+    <p class="govuk-body">Welcome to the GDX 'Request Access to a Dataset' prototype.</p>
+
+    {{ govukWarningText({
+      text: "This is a mock up of how the GDX user experience might work, not a functioning production service.",
+      iconFallbackText: "Warning"
+    }) }}
+
+<form method=post action="request-access/dashboard">
+{{ govukInput({
+    label: {
+        text: "Username"
+    },
+    classes: "govuk-!-width-one-third",
+    id: "user",
+    name: "user"
+}) }}
+
+{{ govukButton({
+    text: "Continue",
+    preventDoubleClick: true
+}) }}
+</form>
+
+{% endblock %}

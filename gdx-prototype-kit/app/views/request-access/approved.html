@@ -1,4 +1,4 @@
-{% extends "layout.html" %}
+{% extends "request-access/layout.html" %}
 
 {% block pageTitle %}
 Confirmation page template – {{ serviceName }} – GOV.UK Prototype Kit
@@ -10,19 +10,16 @@ Confirmation page template – {{ serviceName }} – GOV.UK Prototype Kit
     <div class="govuk-grid-column-two-thirds">
 
         <div class="govuk-panel govuk-panel--confirmation">
-            <h1 class="govuk-panel__title">Further information requested</h1>
+            <h1 class="govuk-panel__title">Data share request approved</h1>
         </div>
 
         <p>
-            We have sent DWP a request for further information on:
-        </p>
-        <p>
-            {{ data['furtherInformation'] }}
+            We have sent you and DWP a confirmation email.
         </p>
 
         <h2 class="govuk-heading-m">What happens next</h2>
-        <p>We have informed DWP.</p>
-        <p>They will not be able to access the {{ data['dataset-name'] }} dataset yet.</p>
+        <p>We have informed DWP and sent them an access token.</p>
+        <p>They will be able to access the {{ data['dataset-name'] }} dataset with immediate effect.</p>
         <p><a href="https://www.gov.uk/service-manual/user-centred-design/resources/patterns/feedback-pages.html">What did you think of this service?</a> (takes 30 seconds)</p>
 
 

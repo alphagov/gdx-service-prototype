@@ -1,11 +1,11 @@
-{% extends "layout.html" %}
+{% extends "request-access/layout.html" %}
 {% block pageTitle %}GDX - Access Request{% endblock %}
 
 {% block content %}
 
 {{ govukBackLink({
 text: "Back",
-href: "/requests"
+href: "requests"
 }) }}
 
 <h1 class="govuk-heading-l">Access Request</h1>
@@ -71,7 +71,7 @@ href: "/requests"
     ]
 }) }}
 
-<form method=post action="/check-answer">
+<form method=post action="check-answer">
 {{ govukRadios({
   idPrefix: "approval",
   id: "approval-choice",

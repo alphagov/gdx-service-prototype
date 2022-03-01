@@ -1,4 +1,4 @@
-{% extends "layout.html" %}
+{% extends "request-access/layout.html" %}
 
 {% block pageTitle %}GDX - Data Requests{% endblock %}
 
@@ -6,14 +6,14 @@
 
 {{ govukBackLink({
 text: "Back",
-href: "/dashboard"
+href: "dashboard"
 }) }}
 
 <h1 class="govuk-heading-l">Data Requests</h1>
 
 <ul class="govuk-list">
     <li>
-        <a class="govuk-link" href="/view-request">Death Events - Charlie (DWP)</a>
+        <a class="govuk-link" href="view-request">Death Events - Charlie (DWP)</a>
     </li>
 </ul>
 
