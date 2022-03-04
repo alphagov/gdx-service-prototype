@@ -25,6 +25,14 @@ router.get('/', function (req, res) {
     res.redirect('/request-access')
 })
 
+router.get('/request-access/index', function (req, res) {
+    res.redirect('/request-access')
+})
+
+router.get('/access-management/index', function (req, res) {
+    res.redirect('/access-management')
+})
+
 
 
 module.exports = router

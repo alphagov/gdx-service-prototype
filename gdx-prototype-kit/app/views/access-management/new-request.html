@@ -1,0 +1,17 @@
+{% extends "access-management/layout.html" %}
+
+{% block pageTitle %}Home - {{serviceName}}{% endblock %}
+
+{% block content %}
+
+{{ govukBackLink({
+text: "Back",
+href: "/access-management/dashboard"
+}) }}
+
+<h1 class="govuk-heading-l">Data Dashboard: {{ data['dashboard-department'] }}</h1>
+<h2 class="govuk-heading-m">Request from {{ data['requesting-department'] }} to access {{ data['dataset-name'] }}</h2>
+
+
+
+{% endblock %}
