@@ -1,5 +1,5 @@
 
-{% extends "layout.html" %}
+{% extends "access-management/layout.html" %}
 
 {% block pageTitle %}
   Home – GOV.UK
@@ -7,14 +7,14 @@
 
 {% block content %}
     <h1 class="govuk-heading-xl">GDX</h1>
-    <p class="govuk-body">Welcome to the GDX prototype.</p>
+    <p class="govuk-body">Welcome to the GDX 'Access Management' prototype.</p>
 
     {{ govukWarningText({
       text: "This is a mock up of how the GDX user experience might work, not a functioning production service.",
       iconFallbackText: "Warning"
     }) }}
 
-<form method=post action="/dashboard">
+<form method=post action="access-management/dashboard">
 {{ govukInput({
     label: {
         text: "Username"

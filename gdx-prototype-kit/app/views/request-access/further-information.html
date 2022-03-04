@@ -1,4 +1,4 @@
-{% extends "layout.html" %}
+{% extends "request-access/layout.html" %}
 
 
 {% block pageTitle %}GDX - Request Access{% endblock %}
@@ -10,7 +10,7 @@ text: "Back",
 href: "/view-request"
 }) }}
 
-<form method="post" action="/further-information-confirmation">
+<form method="post" action="further-information-confirmation">
 {{ govukTextarea({
     name: "furtherInformation",
     id: "furtherInformation",

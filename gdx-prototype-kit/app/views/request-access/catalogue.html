@@ -1,4 +1,4 @@
-{% extends "layout.html" %}
+{% extends "request-access/layout.html" %}
 
 {% block pageTitle %}GDX - Catalogue{% endblock %}
 
@@ -6,7 +6,7 @@
 
 {{ govukBackLink({
 text: "Back",
-href: "/dashboard"
+href: "dashboard"
 }) }}
 
 <h1 class="govuk-heading-l">GDX Catalogue</h1>
@@ -15,13 +15,13 @@ href: "/dashboard"
 <p class="govuk-body">There are currently 3 datasets available via GDX.</p>
 <ul class="govuk-list">
     <li>
-        <a class = "govuk-link" href="/dataset">{{ data['dataset-name'] }}</a>
+        <a class = "govuk-link" href="dataset">{{ data['dataset-name'] }}</a>
     </li>
     <li>
-        <a class = "govuk-link" href="/dataset">Debt Events</a>
+        <a class = "govuk-link" href="dataset">Debt Events</a>
     </li>
     <li>
-        <a class = "govuk-link" href="/dataset">Passport Information</a>
+        <a class = "govuk-link" href="dataset">Passport Information</a>
     </li>
 </ul>
 

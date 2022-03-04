@@ -1,5 +1,5 @@
 
-{% extends "layout.html" %}
+{% extends "request-access/layout.html" %}
 
 {% block pageTitle %}GDX - Dataset{% endblock %}
 
@@ -9,7 +9,7 @@
 
 {{ govukBackLink({
 text: "Back",
-href: "/catalogue"
+href: "catalogue"
 }) }}
 
     <h1 class="govuk-heading-l">{{ data['dataset-name'] }}</h1>

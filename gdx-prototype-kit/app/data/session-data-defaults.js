@@ -30,8 +30,10 @@ module.exports = {
   "dataset-technical-requirements": "Events based technical protocol",
   "dataset-legal-ops-requirements": "TBC",
   "dataset-other-requirements": "TBC",
-  "requesting-department": "DWP",
+  "requesting-department": "HMRC",
   "requesting-department-email": "example@dwp.gov.uk",
-  "request-date": new Date().toLocaleDateString(),
+  "request-date": new Date().toLocaleDateString("en-GB"),
+  "dashboard-department": "DWP",
+
 
 }

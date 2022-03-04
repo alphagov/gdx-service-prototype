@@ -1,4 +1,4 @@
-{% extends "layout.html" %}
+{% extends "request-access/layout.html" %}
 
 {% block pageTitle %}
   Check your answers template – {{ serviceName }} – GOV.UK Prototype Kit
@@ -112,7 +112,7 @@
 
       <p>By submitting this application you are confirming that, to the best of your knowledge, the details you are providing are correct.</p>
 
-      <form action="/access-request-confirmation" method="post" novalidate>
+      <form action="access-request-confirmation" method="post" novalidate>
 
         <button type="submit" class="govuk-button" data-module="govuk-button">
           Accept and send
