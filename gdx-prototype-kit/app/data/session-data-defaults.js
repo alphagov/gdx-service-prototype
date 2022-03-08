@@ -30,10 +30,14 @@ module.exports = {
   "dataset-technical-requirements": "Events based technical protocol",
   "dataset-legal-ops-requirements": "TBC",
   "dataset-other-requirements": "TBC",
-  "requesting-department": "HMRC",
+  "requesting-department": "DWP",
   "requesting-department-email": "example@dwp.gov.uk",
   "request-date": new Date().toLocaleDateString("en-GB"),
-  "dashboard-department": "DWP",
+  "dashboard-department": "GRO",
+  "dataset-request-details": "We (DWP) need to access this data in order to utilise several critical services such as Tell Us Once",
+  "dataset-request-used-for": "We (DWP) will use the data as an asset in the Tell Us Once service which informs other DWP services about deaths",
+  "dataset-connection-details": "Connection details etc etc",
+  "dataset-onboarding-details": "Onboarding details etc etc"
 
 
 }

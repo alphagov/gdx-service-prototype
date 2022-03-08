@@ -25,7 +25,7 @@ href: "requests"
             text: "Requesting department"
           },
           value: {
-            text: "DWP"
+            text: data['requesting-department']
           }
         },
         {
@@ -49,7 +49,7 @@ href: "requests"
             text: "Request details"
           },
           value: {
-            html: "We (DWP) need to access this data in order to utilise several critical services such as Tell Us Once"
+            html: data['dataset-request-details']
           }
         },
         {
@@ -57,7 +57,7 @@ href: "requests"
             text: "What the data will be used for"
           },
           value: {
-            html: "We (DWP) will use the data as an asset in the Tell Us Once service which informs other DWP services about deaths"
+            html: data['dataset-request-used-for']
           }
         },
         {

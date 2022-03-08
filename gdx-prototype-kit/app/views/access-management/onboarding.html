@@ -10,28 +10,35 @@ href: "/access-management/dashboard"
 }) }}
 
 <h1 class="govuk-heading-l">Data Dashboard: {{ data['dashboard-department'] }}</h1>
-<h2 class="govuk-heading-m">Request from {{ data['requesting-department'] }} to access {{ data['dataset-name'] }}</h2>
+<h2 class="govuk-heading-m">{{ data['requesting-department'] }} onboarding</h2>
 
 {{ govukAccordion({
   id: "accordion-default",
   items: [
     {
       heading: {
-        text: "Request summary"
+        text: "Connection details"
       },
       content: {
-        html: "<p class='govuk-body'>".concat(data['dataset-request-details'], "</p>")
+        html: "<p class='govuk-body'>".concat(data['dataset-connection-details'], "</p>")
       }
     },
     {
       heading: {
-        text: "What the data will be used for"
+        text: "Onboarding details"
       },
       content: {
-        html: "<p class='govuk-body'>".concat(data['dataset-request-used-for'], "</p>")
+        html: "<p class='govuk-body'>".concat(data['dataset-onboarding-details'], "</p>")
       }
     }
   ]
 }) }}
+
+<div class="govuk-button-group">
+    {{ govukButton({
+    text: "Send onboarding details",
+    href: "sent-onboarding-details"
+    }) }}
+</div>
 
 {% endblock %}
